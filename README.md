@@ -69,6 +69,9 @@ Projects each element of a collection into a new collection
 List<TResult> map(Collection<TSource> items, IMapper<TSource, TResult> mapper)
 ```
 
+## Javadoc
+[Click here](http://simonpercic.github.io/CollectionHelper/javadoc/)
+
 ## Usage
 
 - Add as a submodule to your project's GIT repository

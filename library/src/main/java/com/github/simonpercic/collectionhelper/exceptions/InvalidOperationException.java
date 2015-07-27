@@ -7,7 +7,7 @@
  * Distributed under the MIT License, see LICENSE.txt for details
  */
 
-package eu.simonpercic.java.collectionhelper.exceptions;
+package com.github.simonpercic.collectionhelper.exceptions;
 
 /**
  * Invalid operation exception.

@@ -7,12 +7,10 @@
  * Distributed under the MIT License, see LICENSE.txt for details
  */
 
-package eu.simonpercic.java.collectionhelper.test;
+package com.github.simonpercic.collectionhelper;
 
-import eu.simonpercic.java.collectionhelper.CollectionHelper;
-import eu.simonpercic.java.collectionhelper.IMapper;
-import eu.simonpercic.java.collectionhelper.IPredicate;
-import eu.simonpercic.java.collectionhelper.exceptions.InvalidOperationException;
+import com.github.simonpercic.collectionhelper.exceptions.InvalidOperationException;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -23,7 +21,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Tests.

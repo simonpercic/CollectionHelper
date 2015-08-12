@@ -1,5 +1,7 @@
 # CollectionHelper 
 
+[![Build Status](https://api.travis-ci.org/simonpercic/CollectionHelper.svg?branch=master)](https://travis-ci.org/simonpercic/CollectionHelper)
+
 ## What is it?
 
 A set of static utility methods to simplify filtering and querying Java's Collections.
@@ -8,66 +10,69 @@ A limited subset of [.NET framework's LINQ Enumerable Methods](http://msdn.micro
 
 ## Methods
 
-- ### Filter
+#### Filter
 Filters a collection using the given predicate
 ```java
 List<T> filter(Collection<T> items, IPredicate<T> predicate)
 ```
 
-- ### First
+#### First
 Returns the first element from a collection that matches the given predicate.
 Throws an exception if no matching element is found
 ```java
 T first(Collection<T> items, IPredicate<T> predicate)
 ```
 
-- ### First or null
+#### First or null
 Returns the first element from a collection that matches the given predicate or null if no matching element is found
 ```java
 T firstOrNull(Collection<T> items, IPredicate<T> predicate)
 ```
 
-- ### Any
+#### Any
 Returns true if any element of a collection matches the given predicate
 ```java
 boolean any(Collection<T> items, IPredicate<T> predicate)
 ```
 
-- ### All
+#### All
 Returns true if all elements of a collection match the given predicate
 ```java
 boolean all(Collection<T> items, IPredicate<T> predicate)
 ```
 
-- ### Is empty
+#### Is empty
 Returns true if the collection is null or contains no elements
 ```java
 boolean isEmpty(Collection items)
 ```
 
-- ### Single
+#### Single
 Returns the only element from a collection that matches the given predicate. Throws an exception if the number of found elements is not exactly 1
 ```java
 T single(Collection<T> items, IPredicate<T> predicate)
 ```
 
-- ### Single or null
+#### Single or null
 Returns the only element from a collection that matches the given predicate or null if such element is not found. Throws an exception if there is more than 1 element matching the predicate
 ```java
 T singleOrNull(Collection<T> items, IPredicate<T> predicate)
 ```
 
-- ### Count
+#### Count
 Returns the number of elements in a collection matching the given predicate
 ```java
 int count(Collection<T> items, IPredicate<T> predicate)
 ```
 
-- ### Map
+#### Map
 Projects each element of a collection into a new collection
 ```java
 List<TResult> map(Collection<TSource> items, IMapper<TSource, TResult> mapper)
 ```
+
+## Javadoc
+[Click here](http://simonpercic.github.io/CollectionHelper/javadoc/)
 
 ## Usage
 

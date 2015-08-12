@@ -7,9 +7,9 @@
  * Distributed under the MIT License, see LICENSE.txt for details
  */
 
-package eu.simonpercic.java.collectionhelper;
+package com.github.simonpercic.collectionhelper;
 
-import eu.simonpercic.java.collectionhelper.exceptions.InvalidOperationException;
+import com.github.simonpercic.collectionhelper.exceptions.InvalidOperationException;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -17,7 +17,6 @@ import java.util.List;
 
 /**
  * Collection helper.
- * <p/>
  * A set of static utility methods to simplify filtering and querying Java's Collections.
  * A limited subset of .NET framework's LINQ Enumerable Methods.
  *
@@ -27,9 +26,9 @@ public class CollectionHelper {
     /**
      * Filters a collection using the given predicate.
      *
-     * @param items     source items
+     * @param items source items
      * @param predicate predicate function
-     * @param <T>       type of elements in the source collection
+     * @param <T> type of elements in the source collection
      * @return a new filtered list
      */
     public static <T> List<T> filter(Collection<T> items, IPredicate<T> predicate) {
@@ -48,13 +47,13 @@ public class CollectionHelper {
 
     /**
      * Returns the first element from a collection that matches the given predicate.
-     * Throws a {@link eu.simonpercic.java.collectionhelper.exceptions.InvalidOperationException} if no matching element is found.
+     * Throws a {@link com.github.simonpercic.collectionhelper.exceptions.InvalidOperationException} if no matching element is found.
      *
-     * @param items     source items
+     * @param items source items
      * @param predicate predicate function
-     * @param <T>       type of elements in the source collection
+     * @param <T> type of elements in the source collection
      * @return the first element that matches the given predicate
-     * @throws eu.simonpercic.java.collectionhelper.exceptions.InvalidOperationException if no matching element is found
+     * @throws com.github.simonpercic.collectionhelper.exceptions.InvalidOperationException if no matching element is found
      */
     public static <T> T first(Collection<T> items, IPredicate<T> predicate) {
         T firstOrNull = firstOrNull(items, predicate);
@@ -69,9 +68,9 @@ public class CollectionHelper {
     /**
      * Returns the first element from a collection that matches the given predicate or null if no matching element is found.
      *
-     * @param items     source items
+     * @param items source items
      * @param predicate predicate function
-     * @param <T>       type of elements in the source collection
+     * @param <T> type of elements in the source collection
      * @return the first element that matches the given predicate or null if no matching element is found
      */
     public static <T> T firstOrNull(Collection<T> items, IPredicate<T> predicate) {
@@ -89,9 +88,9 @@ public class CollectionHelper {
     /**
      * Returns <tt>true</tt> if any element of a collection matches the given predicate.
      *
-     * @param items     source items
+     * @param items source items
      * @param predicate predicate function
-     * @param <T>       type of elements in the source collection
+     * @param <T> type of elements in the source collection
      * @return <tt>true</tt> if any element of the collection matches the given predicate
      */
     public static <T> boolean any(Collection<T> items, IPredicate<T> predicate) {
@@ -102,9 +101,9 @@ public class CollectionHelper {
     /**
      * Returns <tt>true</tt> if all elements of a collection match the given predicate.
      *
-     * @param items     source items
+     * @param items source items
      * @param predicate predicate function
-     * @param <T>       type of elements in the source collection
+     * @param <T> type of elements in the source collection
      * @return <tt>true</tt> if all elements of a collection match the given predicate
      */
     public static <T> boolean all(Collection<T> items, IPredicate<T> predicate) {
@@ -133,13 +132,13 @@ public class CollectionHelper {
 
     /**
      * Returns the only element from a collection that matches the given predicate.
-     * Throws a {@link eu.simonpercic.java.collectionhelper.exceptions.InvalidOperationException} if the number of found elements is not exactly 1.
+     * Throws a {@link com.github.simonpercic.collectionhelper.exceptions.InvalidOperationException} if the number of found elements is not exactly 1.
      *
-     * @param items     source items
+     * @param items source items
      * @param predicate predicate function
-     * @param <T>       type of elements in the source collection
+     * @param <T> type of elements in the source collection
      * @return the only element that matches the given predicate
-     * @throws eu.simonpercic.java.collectionhelper.exceptions.InvalidOperationException if the number of found elements is not exactly 1
+     * @throws com.github.simonpercic.collectionhelper.exceptions.InvalidOperationException if the number of found elements is not exactly 1
      */
     public static <T> T single(Collection<T> items, IPredicate<T> predicate) {
         T singleOrNull = singleOrNull(items, predicate);
@@ -153,13 +152,13 @@ public class CollectionHelper {
 
     /**
      * Returns the only element from a collection that matches the given predicate or null if such element is not found.
-     * Throws a {@link eu.simonpercic.java.collectionhelper.exceptions.InvalidOperationException} if there is more than 1 element matching the predicate.
+     * Throws a {@link com.github.simonpercic.collectionhelper.exceptions.InvalidOperationException} if there is more than 1 element matching the predicate.
      *
-     * @param items     source items
+     * @param items source items
      * @param predicate predicate function
-     * @param <T>       type of elements in the source collection
+     * @param <T> type of elements in the source collection
      * @return the only element that matches the given predicate or null if such element is not found
-     * @throws eu.simonpercic.java.collectionhelper.exceptions.InvalidOperationException if there is more than 1 element matching the predicate
+     * @throws com.github.simonpercic.collectionhelper.exceptions.InvalidOperationException if there is more than 1 element matching the predicate
      */
     public static <T> T singleOrNull(Collection<T> items, IPredicate<T> predicate) {
         if (isEmpty(items)) {
@@ -184,9 +183,9 @@ public class CollectionHelper {
     /**
      * Returns the number of elements in a collection matching the given predicate.
      *
-     * @param items     source items
+     * @param items source items
      * @param predicate predicate function
-     * @param <T>       type of elements in the source collection
+     * @param <T> type of elements in the source collection
      * @return the number of elements in a collection matching the given predicate
      */
     public static <T> int count(Collection<T> items, IPredicate<T> predicate) {
@@ -206,8 +205,8 @@ public class CollectionHelper {
     /**
      * Projects each element of a collection into a new collection.
      *
-     * @param items     source items
-     * @param mapper    mapping function
+     * @param items source items
+     * @param mapper mapping function
      * @param <TSource> type of elements in the source collection
      * @param <TResult> type of elements in the resulting collection
      * @return a new collection with projected element values

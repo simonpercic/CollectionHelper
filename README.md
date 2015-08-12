@@ -1,5 +1,7 @@
 # CollectionHelper 
 
+[![Build Status](https://api.travis-ci.org/simonpercic/CollectionHelper.svg?branch=master)](https://travis-ci.org/simonpercic/CollectionHelper)
+
 ## What is it?
 
 A set of static utility methods to simplify filtering and querying Java's Collections.

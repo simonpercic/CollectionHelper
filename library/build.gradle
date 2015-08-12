@@ -1,6 +1,0 @@
-apply plugin: 'java'
-
-dependencies {
-    // Unit test dependencies
-    testCompile 'junit:junit:4.11'
-}

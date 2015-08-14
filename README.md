@@ -1,6 +1,6 @@
 # CollectionHelper 
 
-[![Build Status](https://api.travis-ci.org/simonpercic/CollectionHelper.svg?branch=master)](https://travis-ci.org/simonpercic/CollectionHelper)
+[![Build Status](https://api.travis-ci.org/simonpercic/CollectionHelper.svg?branch=master)](https://travis-ci.org/simonpercic/CollectionHelper) [ ![Download](https://api.bintray.com/packages/simonpercic/maven/collectionhelper/images/download.svg) ](https://bintray.com/simonpercic/maven/collectionhelper/_latestVersion)
 
 ## What is it?
 
@@ -76,12 +76,47 @@ List<TResult> map(Collection<TSource> items, IMapper<TSource, TResult> mapper)
 
 ## Usage
 
-- Add as a submodule to your project's GIT repository
-- Manually checkout / download and include in your project  
+Add using Gradle:
+```groovy
+compile 'com.github.simonpercic:collectionhelper:1.0.0'
+```
+
+### Use
+```java
+// sample list
+List<Integer> integerList = Arrays.asList(1, 4, 2, 7, 8, 0, 5);
+
+// filter
+List<Integer> largerThan2 = CollectionHelper.filter(integerList, new IPredicate<Integer>() {
+            @Override public boolean apply(Integer intValue) {
+                return intValue > 2;
+            }
+        });
+        
+// map
+List<String> mappedList = CollectionHelper.map(integerList, new IMapper<Integer, String>() {
+            @Override public String map(Integer intValue) {
+                return String.format("myString_%d", intValue);
+            }
+        });
+``` 
+
+## Android Pro-tip
+Use the awesome [Gradle Retrolambda Plugin](https://github.com/evant/gradle-retrolambda) with Java 8 to use lambdas:
+```java
+// filter
+List<Integer> largerThan2 = CollectionHelper.filter(integerList, intValue -> intValue > 2);
+        
+// map
+List<String> mappedList = CollectionHelper.map(integerList, intValue -> String.format("myString_%d", intValue));
+
+// or even using a method reference
+List<String> simpleMappedList = CollectionHelper.map(integerList, String::valueOf);
+``` 
 
 ## Appendix
 
-Since Java 8 you can also use [Lambda expressions](http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html) and [Streams](http://docs.oracle.com/javase/tutorial/collections/streams/) to simplify working with Collections.
+If you are using Java 8 and are NOT on Android you can also use [Lambda expressions](http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html) and [Streams](http://docs.oracle.com/javase/tutorial/collections/streams/) to simplify working with Collections.
 
 ## License
 

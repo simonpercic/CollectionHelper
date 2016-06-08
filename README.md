@@ -116,7 +116,10 @@ List<String> simpleMappedList = CollectionHelper.map(integerList, String::valueO
 
 ## Appendix
 
-If you are using Java 8 and are NOT on Android you can also use [Lambda expressions](http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html) and [Streams](http://docs.oracle.com/javase/tutorial/collections/streams/) to simplify working with Collections.
+If you are using Java 8 and are NOT on Android you can also use [Streams](http://docs.oracle.com/javase/tutorial/collections/streams/) to simplify working with Collections.
+
+## Change Log
+See [CHANGELOG.md](CHANGELOG.md)
 
 ## License
 

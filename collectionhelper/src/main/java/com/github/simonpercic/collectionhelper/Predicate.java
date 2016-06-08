@@ -14,7 +14,7 @@ package com.github.simonpercic.collectionhelper;
  *
  * @author Simon Percic <a href="https://github.com/simonpercic">https://github.com/simonpercic</a>
  */
-public interface IPredicate<T> {
+public interface Predicate<T> {
     /**
      * Should return <tt>true</tt> if the given object matches the predicate.
      *

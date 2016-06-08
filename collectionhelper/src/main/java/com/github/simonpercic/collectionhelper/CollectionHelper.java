@@ -22,7 +22,18 @@ import java.util.List;
  *
  * @author Simon Percic <a href="https://github.com/simonpercic">https://github.com/simonpercic</a>
  */
+@SuppressWarnings("checkstyle:finalclass")
 public class CollectionHelper {
+
+    private CollectionHelper() {
+        // no instance
+    }
+
+    /**
+     * The value returned instead of the index if no item matches the given predicate.
+     */
+    public static final int NOT_FOUND_INDEX = -1;
+
     /**
      * Filters a collection using the given predicate.
      *
@@ -31,8 +42,8 @@ public class CollectionHelper {
      * @param <T> type of elements in the source collection
      * @return a new filtered list
      */
-    public static <T> List<T> filter(Collection<T> items, IPredicate<T> predicate) {
-        List<T> result = new ArrayList<T>();
+    public static <T> List<T> filter(Collection<T> items, Predicate<T> predicate) {
+        List<T> result = new ArrayList<>();
 
         if (!isEmpty(items)) {
             for (T item : items) {
@@ -47,15 +58,16 @@ public class CollectionHelper {
 
     /**
      * Returns the first element from a collection that matches the given predicate.
-     * Throws a {@link com.github.simonpercic.collectionhelper.exceptions.InvalidOperationException} if no matching element is found.
+     * Throws a {@link InvalidOperationException} if no matching
+     * element is found.
      *
      * @param items source items
      * @param predicate predicate function
      * @param <T> type of elements in the source collection
      * @return the first element that matches the given predicate
-     * @throws com.github.simonpercic.collectionhelper.exceptions.InvalidOperationException if no matching element is found
+     * @throws InvalidOperationException if no matching element is found
      */
-    public static <T> T first(Collection<T> items, IPredicate<T> predicate) {
+    public static <T> T first(Collection<T> items, Predicate<T> predicate) {
         T firstOrNull = firstOrNull(items, predicate);
 
         if (firstOrNull == null) {
@@ -66,14 +78,15 @@ public class CollectionHelper {
     }
 
     /**
-     * Returns the first element from a collection that matches the given predicate or null if no matching element is found.
+     * Returns the first element from a collection that matches the given predicate or null if no matching element is
+     * found.
      *
      * @param items source items
      * @param predicate predicate function
      * @param <T> type of elements in the source collection
      * @return the first element that matches the given predicate or null if no matching element is found
      */
-    public static <T> T firstOrNull(Collection<T> items, IPredicate<T> predicate) {
+    public static <T> T firstOrNull(Collection<T> items, Predicate<T> predicate) {
         if (!isEmpty(items)) {
             for (T item : items) {
                 if (predicate.apply(item)) {
@@ -86,6 +99,31 @@ public class CollectionHelper {
     }
 
     /**
+     * Returns the index of the first element in a collection that matches the given predicate.
+     * Returns {#NOT_FOUND_INDEX} if no element matches the given predicate.
+     *
+     * @param items source items
+     * @param predicate predicate function
+     * @param <T> type of elements in the source collection
+     * @return index of the first element that matches the given predicate or {#NOT_FOUND_INDEX} if no element matches
+     * the given predicate
+     */
+    public static <T> int firstIndexOf(Collection<T> items, Predicate<T> predicate) {
+        if (!isEmpty(items)) {
+            int index = 0;
+            for (T item : items) {
+                if (predicate.apply(item)) {
+                    return index;
+                }
+
+                index++;
+            }
+        }
+
+        return NOT_FOUND_INDEX;
+    }
+
+    /**
      * Returns <tt>true</tt> if any element of a collection matches the given predicate.
      *
      * @param items source items
@@ -93,7 +131,7 @@ public class CollectionHelper {
      * @param <T> type of elements in the source collection
      * @return <tt>true</tt> if any element of the collection matches the given predicate
      */
-    public static <T> boolean any(Collection<T> items, IPredicate<T> predicate) {
+    public static <T> boolean any(Collection<T> items, Predicate<T> predicate) {
         T firstOrNull = firstOrNull(items, predicate);
         return firstOrNull != null;
     }
@@ -106,7 +144,7 @@ public class CollectionHelper {
      * @param <T> type of elements in the source collection
      * @return <tt>true</tt> if all elements of a collection match the given predicate
      */
-    public static <T> boolean all(Collection<T> items, IPredicate<T> predicate) {
+    public static <T> boolean all(Collection<T> items, Predicate<T> predicate) {
         if (isEmpty(items)) {
             return false;
         }
@@ -127,20 +165,21 @@ public class CollectionHelper {
      * @return <tt>true</tt> if the collection is null or contains no elements
      */
     public static boolean isEmpty(Collection items) {
-        return (items == null || items.size() == 0);
+        return items == null || items.size() == 0;
     }
 
     /**
      * Returns the only element from a collection that matches the given predicate.
-     * Throws a {@link com.github.simonpercic.collectionhelper.exceptions.InvalidOperationException} if the number of found elements is not exactly 1.
+     * Throws a {@link InvalidOperationException} if the number of
+     * found elements is not exactly 1.
      *
      * @param items source items
      * @param predicate predicate function
      * @param <T> type of elements in the source collection
      * @return the only element that matches the given predicate
-     * @throws com.github.simonpercic.collectionhelper.exceptions.InvalidOperationException if the number of found elements is not exactly 1
+     * @throws InvalidOperationException if the number of found elements is not exactly 1
      */
-    public static <T> T single(Collection<T> items, IPredicate<T> predicate) {
+    public static <T> T single(Collection<T> items, Predicate<T> predicate) {
         T singleOrNull = singleOrNull(items, predicate);
 
         if (singleOrNull == null) {
@@ -152,15 +191,15 @@ public class CollectionHelper {
 
     /**
      * Returns the only element from a collection that matches the given predicate or null if such element is not found.
-     * Throws a {@link com.github.simonpercic.collectionhelper.exceptions.InvalidOperationException} if there is more than 1 element matching the predicate.
+     * Throws a {@link InvalidOperationException} if there is more than 1 element matching the predicate.
      *
      * @param items source items
      * @param predicate predicate function
      * @param <T> type of elements in the source collection
      * @return the only element that matches the given predicate or null if such element is not found
-     * @throws com.github.simonpercic.collectionhelper.exceptions.InvalidOperationException if there is more than 1 element matching the predicate
+     * @throws InvalidOperationException if there is more than 1 element matching the predicate
      */
-    public static <T> T singleOrNull(Collection<T> items, IPredicate<T> predicate) {
+    public static <T> T singleOrNull(Collection<T> items, Predicate<T> predicate) {
         if (isEmpty(items)) {
             return null;
         }
@@ -181,6 +220,39 @@ public class CollectionHelper {
     }
 
     /**
+     * Returns the index of the only element in a collection that matches the given predicate.
+     * Returns {#NOT_FOUND_INDEX} if no element matches the given predicate.
+     * Throws a {@link InvalidOperationException} if there is more than 1 element matching the predicate.
+     *
+     * @param items source items
+     * @param predicate predicate function
+     * @param <T> type of elements in the source collection
+     * @return index of the only element that matches the given predicate or {#NOT_FOUND_INDEX} if no element matches
+     * the given predicate
+     * @throws InvalidOperationException if there is more than 1 element matching the predicate
+     */
+    public static <T> int singleIndexOf(Collection<T> items, Predicate<T> predicate) {
+        int result = NOT_FOUND_INDEX;
+
+        if (!isEmpty(items)) {
+            int index = 0;
+            for (T item : items) {
+                if (predicate.apply(item)) {
+                    if (result == NOT_FOUND_INDEX) {
+                        result = index;
+                    } else {
+                        throw new InvalidOperationException("Multiple items match!");
+                    }
+                }
+
+                index++;
+            }
+        }
+
+        return result;
+    }
+
+    /**
      * Returns the number of elements in a collection matching the given predicate.
      *
      * @param items source items
@@ -188,7 +260,7 @@ public class CollectionHelper {
      * @param <T> type of elements in the source collection
      * @return the number of elements in a collection matching the given predicate
      */
-    public static <T> int count(Collection<T> items, IPredicate<T> predicate) {
+    public static <T> int count(Collection<T> items, Predicate<T> predicate) {
         int count = 0;
 
         if (!isEmpty(items)) {
@@ -211,12 +283,12 @@ public class CollectionHelper {
      * @param <TResult> type of elements in the resulting collection
      * @return a new collection with projected element values
      */
-    public static <TSource, TResult> List<TResult> map(Collection<TSource> items, IMapper<TSource, TResult> mapper) {
+    public static <TSource, TResult> List<TResult> map(Collection<TSource> items, Mapper<TSource, TResult> mapper) {
         if (isEmpty(items)) {
-            return new ArrayList<TResult>();
+            return new ArrayList<>();
         }
 
-        List<TResult> result = new ArrayList<TResult>(items.size());
+        List<TResult> result = new ArrayList<>(items.size());
 
         for (TSource item : items) {
             TResult mappedItem = mapper.map(item);

@@ -14,12 +14,12 @@ package com.github.simonpercic.collectionhelper;
  *
  * @author Simon Percic <a href="https://github.com/simonpercic">https://github.com/simonpercic</a>
  */
-public interface IMapper<TSource, TResult> {
+public interface Mapper<Source, Result> {
     /**
      * Should map the given object to its projection.
      *
      * @param object source object
      * @return the projection of source object
      */
-    TResult map(TSource object);
+    Result map(Source object);
 }

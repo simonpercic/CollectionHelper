@@ -13,32 +13,32 @@ A limited subset of [.NET framework's LINQ Enumerable Methods](http://msdn.micro
 #### Filter
 Filters a collection using the given predicate
 ```java
-List<T> filter(Collection<T> items, IPredicate<T> predicate)
+List<T> filter(Collection<T> items, Predicate<T> predicate)
 ```
 
 #### First
 Returns the first element from a collection that matches the given predicate.
 Throws an exception if no matching element is found
 ```java
-T first(Collection<T> items, IPredicate<T> predicate)
+T first(Collection<T> items, Predicate<T> predicate)
 ```
 
 #### First or null
 Returns the first element from a collection that matches the given predicate or null if no matching element is found
 ```java
-T firstOrNull(Collection<T> items, IPredicate<T> predicate)
+T firstOrNull(Collection<T> items, Predicate<T> predicate)
 ```
 
 #### Any
 Returns true if any element of a collection matches the given predicate
 ```java
-boolean any(Collection<T> items, IPredicate<T> predicate)
+boolean any(Collection<T> items, Predicate<T> predicate)
 ```
 
 #### All
 Returns true if all elements of a collection match the given predicate
 ```java
-boolean all(Collection<T> items, IPredicate<T> predicate)
+boolean all(Collection<T> items, Predicate<T> predicate)
 ```
 
 #### Is empty
@@ -50,25 +50,25 @@ boolean isEmpty(Collection items)
 #### Single
 Returns the only element from a collection that matches the given predicate. Throws an exception if the number of found elements is not exactly 1
 ```java
-T single(Collection<T> items, IPredicate<T> predicate)
+T single(Collection<T> items, Predicate<T> predicate)
 ```
 
 #### Single or null
 Returns the only element from a collection that matches the given predicate or null if such element is not found. Throws an exception if there is more than 1 element matching the predicate
 ```java
-T singleOrNull(Collection<T> items, IPredicate<T> predicate)
+T singleOrNull(Collection<T> items, Predicate<T> predicate)
 ```
 
 #### Count
 Returns the number of elements in a collection matching the given predicate
 ```java
-int count(Collection<T> items, IPredicate<T> predicate)
+int count(Collection<T> items, Predicate<T> predicate)
 ```
 
 #### Map
 Projects each element of a collection into a new collection
 ```java
-List<TResult> map(Collection<TSource> items, IMapper<TSource, TResult> mapper)
+List<TResult> map(Collection<TSource> items, Mapper<TSource, TResult> mapper)
 ```
 
 ## Javadoc
@@ -87,14 +87,14 @@ compile 'com.github.simonpercic:collectionhelper:1.0.0'
 List<Integer> integerList = Arrays.asList(1, 4, 2, 7, 8, 0, 5);
 
 // filter
-List<Integer> largerThan2 = CollectionHelper.filter(integerList, new IPredicate<Integer>() {
+List<Integer> largerThan2 = CollectionHelper.filter(integerList, new Predicate<Integer>() {
             @Override public boolean apply(Integer intValue) {
                 return intValue > 2;
             }
         });
         
 // map
-List<String> mappedList = CollectionHelper.map(integerList, new IMapper<Integer, String>() {
+List<String> mappedList = CollectionHelper.map(integerList, new Mapper<Integer, String>() {
             @Override public String map(Integer intValue) {
                 return String.format("myString_%d", intValue);
             }

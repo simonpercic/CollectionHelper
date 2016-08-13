@@ -1,1 +1,3 @@
-include ':collectionhelper'
+rootProject.name = 'CollectionHelper'
+include 'collectionhelper'
+

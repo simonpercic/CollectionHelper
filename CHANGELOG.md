@@ -4,7 +4,7 @@ Change Log
 Version 1.2.0 *(2016-08-21)*
 ----------------------------
 
- * New: Converted the project to a pure Java library, can now be used in Java projects.
+ * New: Converted the project to a Java library, can now be used in pure Java (non-Android) projects as well.
 
 
 Version 1.1.0 *(2016-06-08)*

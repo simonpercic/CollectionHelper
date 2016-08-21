@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 1.2.0 *(2016-08-21)*
+----------------------------
+
+ * New: Converted the project to a pure Java library, can now be used in Java projects.
+
+
 Version 1.1.0 *(2016-06-08)*
 ----------------------------
 

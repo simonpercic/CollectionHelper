@@ -78,7 +78,7 @@ List<TResult> map(Collection<TSource> items, Mapper<TSource, TResult> mapper)
 
 Add using Gradle:
 ```groovy
-compile 'com.github.simonpercic:collectionhelper:1.1.0'
+compile 'com.github.simonpercic:collectionhelper:1.2.0'
 ```
 
 ### Use

@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 1.2.1 *(2016-09-20)*
+----------------------------
+
+ * Fix: Set Java source and target compatibility to Java 1.7 to fix issues when used in Android projects.
+
+
 Version 1.2.0 *(2016-08-21)*
 ----------------------------
 
